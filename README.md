@@ -1,4 +1,17 @@
-# ZCode
+# ZCode-Rev
+
+> **本仓库基于 ZCode 开源版，恢复并改造了被移除的仓库快照功能。**
+>
+> 2026 年 9 月，安全研究者发现 ZCode 桌面客户端自首个公开版本起即静默打包用户完整工作区（含 `.git` 历史、LFS 缓存、reflog）并加密上传至智谱控制的阿里云 OSS。用户界面的隐私开关无法阻止采集和上传，RSA 私钥仅存于服务端，用户无法解密自己的数据。
+>
+> 本 fork 从 `ZCode-3.12.3-linux-x64.AppImage` 反编译复原了完整的上传链路代码，并将其改造为 **用户可控的自助备份功能**：
+>
+> - **用户自己提供** 阿里云 OSS AccessKey / Bucket，数据上传到用户自己的存储
+> - **用户自己持有** 加密密码（PBKDF2 + AES-256-CTR），可随时自行解密
+> - **用户主动启用**，尊重 `enabled` 开关，不绕过任何隐私设置
+> - 在设置页提供完整的 UI 配置面板（OSS 凭证、加密、文件过滤、手动触发）
+>
+> 详见 [`packages/services/src/repo-snapshot/`](packages/services/src/repo-snapshot/) 目录。
 
 <div align="center">
   <img src="public/logo/icons/1024x1024.png" alt="ZCode" width="128" height="128" />
