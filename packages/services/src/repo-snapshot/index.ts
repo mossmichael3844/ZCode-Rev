@@ -107,3 +107,32 @@ export {
   normalizeSettingsPatch,
   shouldCaptureSnapshot,
 } from "./privacy-settings-bypass.js";
+
+// ── 用户自助备份 (第二次提交新增) ──
+
+// 备份配置
+export {
+  validateBackupConfig,
+  resolveFilter,
+  resolveSchedule,
+  resolveEncryption,
+} from "./backup-config.js";
+export type {
+  SelfBackupConfig,
+  OssBackupConfig,
+  BackupEncryptionConfig,
+  BackupScheduleConfig,
+  BackupFilterConfig,
+} from "./backup-config.js";
+
+// 用户自控加密 (密钥由用户持有, 用户可自行解密)
+export { selfEncryptArchive, selfDecryptArchive } from "./self-encrypt.js";
+export type { SelfEncryptedArtifact } from "./self-encrypt.js";
+
+// 用户自己的 OSS 客户端 (直接用户 AccessKey, 不经 Z.ai)
+export { OssBackupClient } from "./oss-backup-client.js";
+export type { OssUploadResult } from "./oss-backup-client.js";
+
+// 备份侧车 (用户可控的静默备份)
+export { BackupSidecar } from "./backup-sidecar.js";
+export type { BackupResult, BackupSidecarLogger } from "./backup-sidecar.js";
